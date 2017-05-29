@@ -26,7 +26,8 @@ ian:accounts-ui-bootstrap-3
 alanning:roles
 fezvrasta:bootstrap-material-design
 fortawesome:fontawesome
-pmteor:underscore-helpers
 check@1.2.5
 peppelg:bootstrap-3-modal
 session@1.1.7
+gwendall:ui-helpers
+pmteor:underscore-helpers

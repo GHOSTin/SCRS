@@ -8,11 +8,11 @@
                 </div>
 
                 <div class="modal-body">
-                    <div class="form-group label-floating is-empty">
+                    <div class="form-group label-floating {{#if isEq user.profile.name ""}}is-empty{{/if}}">
                         <label for="name" class="control-label">ФИО</label>
                         <input type="text" class="form-control" id="name" value="{{user.profile.name}}">
                     </div>
-                    <div class="form-group label-floating is-empty">
+                    <div class="form-group label-floating {{#if isEq user.username ""}}is-empty{{/if}}">
                         <label for="username" class="control-label">Логин</label>
                         <input type="text" class="form-control" id="username" value="{{user.username}}">
                     </div>
@@ -24,12 +24,14 @@
                         <label for="password2" class="control-label">Повтор пароля</label>
                         <input type="password" class="form-control" id="password2">
                     </div>
-                    <div class="form-group is-empty">
+                    <div class="form-group {{#if isEmpty user.roles}}is-empty{{/if}}">
                         <label for="role">Роль</label>
                         <select id="role" class="form-control">
                             <option></option>
-                            <option value="admin">Администратор</option>
-                            <option value="master">Мастер</option>
+                            <option value="admin" selected="{{#if _contains user.roles 'admin'}}selected{{/if}}">Администратор</option>
+                            <option value="controller" selected="{{#if _contains user.roles 'controller'}}selected{{/if}}">Наставник</option>
+                            <option value="master" selected="{{#if _contains user.roles 'master'}}selected{{/if}}">Мастер</option>
+                            <option value="instructor" selected="{{#if _contains user.roles 'instructor'}}selected{{/if}}">Инструктор</option>
                         </select>
                     </div>
                 </div>

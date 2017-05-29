@@ -13,18 +13,29 @@ Template.userModal.helpers({
 Template.userModal.events({
     'click #save': function(e){
         e.preventDefault();
-        var user = {
-            name: $('#name').val(),
-            username: $('#username').val(),
-            password: $('#password').val(),
-            role: $('#role').val()
-        };
-        
-        Meteor.call('addUser', user, function(error, result){
-            if (error) {
-                console.log(error);
-            }
-        });
+        let userId = Session.get('selectedUser'),
+            user = {
+                name: $('#name').val(),
+                username: $('#username').val(),
+                password: $('#password').val()||"",
+                password2: $('#password2').val()||"",
+                role: $('#role').val()
+            };
+        console.log(user);
+        if (!userId) {
+            Meteor.call('addUser', user, function (error, result) {
+                if (error) {
+                    console.log(error);
+                }
+            });
+        } else {
+            _.extend(user, {id: userId});
+            Meteor.call('editUser', user, function(error, result){
+                if (error) {
+                    console.log(error);
+                }
+            });
+        }
 
         Modal.hide('userModal');
     }
