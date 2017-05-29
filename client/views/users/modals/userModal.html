@@ -1,0 +1,45 @@
+<template name="userModal">
+    <div class="modal fade" id="userModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Добавление/Редактирование пользователя</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group label-floating is-empty">
+                        <label for="name" class="control-label">ФИО</label>
+                        <input type="text" class="form-control" id="name" value="{{user.profile.name}}">
+                    </div>
+                    <div class="form-group label-floating is-empty">
+                        <label for="username" class="control-label">Логин</label>
+                        <input type="text" class="form-control" id="username" value="{{user.username}}">
+                    </div>
+                    <div class="form-group label-floating is-empty">
+                        <label for="password" class="control-label">Пароль</label>
+                        <input type="password" class="form-control" id="password">
+                    </div>
+                    <div class="form-group label-floating is-empty">
+                        <label for="password2" class="control-label">Повтор пароля</label>
+                        <input type="password" class="form-control" id="password2">
+                    </div>
+                    <div class="form-group is-empty">
+                        <label for="role">Роль</label>
+                        <select id="role" class="form-control">
+                            <option></option>
+                            <option value="admin">Администратор</option>
+                            <option value="master">Мастер</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="save">Сохранить</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</template>
