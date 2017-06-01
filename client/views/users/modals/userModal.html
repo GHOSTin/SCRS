@@ -37,16 +37,32 @@
                         <label for="password2" class="control-label">Повтор пароля</label>
                         <input type="password" class="form-control" id="password2">
                     </div>
-                    <div class="form-group {{#if isEmpty user.roles}}is-empty{{/if}}">
-                        <label for="role">Роль</label>
-                        <select id="role" class="form-control">
-                            <option></option>
-                            <option value="admin" selected="{{#if _contains user.roles 'admin'}}selected{{/if}}">Администратор</option>
-                            <option value="controller" selected="{{#if _contains user.roles 'controller'}}selected{{/if}}">Наставник</option>
-                            <option value="master" selected="{{#if _contains user.roles 'master'}}selected{{/if}}">Мастер</option>
-                            <option value="instructor" selected="{{#if _contains user.roles 'instructor'}}selected{{/if}}">Инструктор</option>
-                        </select>
-                    </div>
+                    {{#if _contains currentUser.roles "admin"}}
+                        <div class="form-group {{#if isEmpty user.roles}}is-empty{{/if}}">
+                            <label for="role">Роль</label>
+                            <select id="role" class="form-control">
+                                <option></option>
+                                {{#each role in roles}}
+                                    <option value="{{role.value}}" selected="{{#if _contains user.roles role.value}}selected{{/if}}">{{role.text}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    {{else}}
+                        {{#if _contains currentUser.roles "controller"}}
+                            <div class="form-group">
+                                <label for="roleText">Роль</label>
+                                <input id="roleText" type="text" class="form-control" disabled="disabled" value="Мастер">
+                                <input id="role" type="hidden" value="master">
+                            </div>
+                        {{/if}}
+                        {{#if _contains currentUser.roles "master"}}
+                            <div class="form-group">
+                                <label for="roleText">Роль</label>
+                                <input id="roleText" type="text" class="form-control" disabled="disabled" value="Инструктор">
+                                <input id="role" type="hidden" value="instructor">
+                            </div>
+                        {{/if}}
+                    {{/if}}
                 </div>
 
                 <div class="modal-footer">

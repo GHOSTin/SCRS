@@ -1,3 +1,5 @@
+import {RolesCollection} from '../../../../lib/collections/roles'
+
 Template.userModal.helpers({
     user: function() {
         let userId = Session.get('selectedUser');
@@ -7,7 +9,8 @@ Template.userModal.helpers({
         } else {
             return {username:'', profile:{name: ''}, roles: []}
         }
-    }
+    },
+    roles: () => {return RolesCollection;}
 });
 
 Template.userModal.events({
