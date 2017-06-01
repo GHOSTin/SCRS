@@ -4,6 +4,15 @@
             <div class="modal-content">
 
                 <div class="modal-header">
+                    <div class="pull-right">
+                        <div class="togglebutton">
+                            <label>
+                                Статус
+                                <input id="status" type="checkbox" {{isChecked user.profile.status "active"}}>
+                                <span class="toggle"></span>
+                            </label>
+                        </div>
+                    </div>
                     <h4 class="modal-title">Добавление/Редактирование пользователя</h4>
                 </div>
 
@@ -11,6 +20,10 @@
                     <div class="form-group label-floating {{#if isEq user.profile.name ""}}is-empty{{/if}}">
                         <label for="name" class="control-label">ФИО</label>
                         <input type="text" class="form-control" id="name" value="{{user.profile.name}}">
+                    </div>
+                    <div class="form-group label-floating {{#if isEq user.email ""}}is-empty{{/if}}">
+                        <label for="email" class="control-label">Email</label>
+                        <input type="text" class="form-control" id="email" value="{{user.email}}">
                     </div>
                     <div class="form-group label-floating {{#if isEq user.username ""}}is-empty{{/if}}">
                         <label for="username" class="control-label">Логин</label>

@@ -1,16 +1,8 @@
 <template name="studentItem">
   <tr>
     <td><a data-toggle="tab" href="#contact-{{_id}}">{{name}}</a></td>
-    <td>{{roles}}</td>
-    <td class="contact-type"><i class="fa fa-envelope"> </i></td>
-    <td>{{email}}</td>
-    <td class="client-status">
-        {{#if _isEqual profile.status "active" }}
-            <span class="label label-primary">Активен</span>
-        {{else}}
-            <span class="label label-warning">Отключен</span>
-        {{/if}}
-    </td>
+    <td>{{speciality}}</td>
+    <td>{{year}}</td>
     <td class="text-right">
         <a href="#" class="btn btn-sm no-margin delete" data-user-id="{{_id}}"><i class="fa fa-close"></i></a>
     </td>

@@ -17,9 +17,11 @@ Template.userModal.events({
             user = {
                 name: $('#name').val(),
                 username: $('#username').val(),
+                email: $('#email').val(),
                 password: $('#password').val()||"",
                 password2: $('#password2').val()||"",
-                role: $('#role').val()
+                role: $('#role').val(),
+                status: $('#status').is(':checked')?"active":"",
             };
         console.log(user);
         if (!userId) {
