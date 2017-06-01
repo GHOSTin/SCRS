@@ -1,0 +1,33 @@
+<template name="studentsImportModal">
+    <div class="modal fade" id="studentsImportModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Импорт студентов</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group is-fileinput">
+                        {{#unless uploading}}
+                        <input type="file" id="inputCSV">
+                        {{else}}
+                            <p><i class="fa fa-spin fa-refresh"></i> Загрузка...</p>
+                        {{/unless}}
+                        <div class="input-group">
+                            <input type="text" readonly="" class="form-control" placeholder="Укажите файл CSV">
+                            <span class="input-group-btn input-group-sm">
+                                <button type="button" class="btn btn-fab btn-fab-mini">
+                                    <i class="fa fa-paperclip"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="import">Импортировать</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</template>
