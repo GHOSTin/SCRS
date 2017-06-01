@@ -1,6 +1,6 @@
 Template.userModal.helpers({
     user: function() {
-        var userId = Session.get('selectedUser');
+        let userId = Session.get('selectedUser');
 
         if (typeof userId !== "undefined") {
             return Meteor.users.findOne(userId);
@@ -23,7 +23,6 @@ Template.userModal.events({
                 role: $('#role').val(),
                 status: $('#status').is(':checked')?"active":"",
             };
-        console.log(user);
         if (!userId) {
             Meteor.call('addUser', user, function (error, result) {
                 if (error) {

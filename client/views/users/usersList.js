@@ -5,7 +5,7 @@ Template.usersList.events({
     },
     'click .edit': function (e) {
         e.preventDefault();
-        var user = $(e.target).closest('.edit'),
+        let user = $(e.target).closest('.edit'),
             userId = user.attr('data-user-id');
         ModalHelper.openModalFor(userId);
     }
