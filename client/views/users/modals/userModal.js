@@ -1,4 +1,10 @@
 import {RolesCollection} from '../../../../lib/collections/roles'
+Template.userModal.onRendered(()=>{
+    $('#role').select2({
+        dropdownParent: $('#userModal'),
+        theme: "bootstrap"
+    })
+});
 
 Template.userModal.helpers({
     user: function() {
@@ -42,5 +48,10 @@ Template.userModal.events({
         }
 
         Modal.hide('userModal');
+    },
+    'change select#role': (e) => {
+        if($(e.target).val() === "master") {
+
+        }
     }
 });

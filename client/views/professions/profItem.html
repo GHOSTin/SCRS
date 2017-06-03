@@ -1,0 +1,10 @@
+<template name="profItem">
+  <tr>
+    <td><a data-toggle="tab">{{name}}</a></td>
+    <td class="text-right">
+        {{#if _contains currentUser.roles "admin" }}
+        <a href="#" class="btn btn-sm no-margin delete" data-prof-id="{{_id}}"><i class="fa fa-close"></i></a>
+        {{/if}}
+    </td>
+  </tr>
+</template>

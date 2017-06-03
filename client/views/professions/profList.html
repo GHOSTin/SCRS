@@ -1,0 +1,25 @@
+<template name="profList">
+    <div class="col-sm-8">
+        <div class="well page">
+            <h2>
+                Список профессий
+            </h2>
+            <div class="form-group label-floating is-empty">
+                <div class="input-group">
+                    <label class="control-label" for="profName">Название профессии</label>
+                    <input type="text" class="form-control" id="profName">
+                    <span class="input-group-btn">
+                        <button type="button" href="" class="btn btn-primary btn-raised btn-xs" id="add">Добавить</button>
+                    </span>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <tbody>
+                {{#each this}}
+                    {{> profItem}}
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

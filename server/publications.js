@@ -1,4 +1,5 @@
 import {Students} from '../lib/collections/students.js'
+import {Professions} from '../lib/collections/professions'
 
 Meteor.publish('posts', function() {
   return Posts.find();
@@ -10,6 +11,10 @@ Meteor.publish('userList', function () {
 
 Meteor.publish('studentsList', function () {
     return Students.find();
+});
+
+Meteor.publish('profList', function () {
+    return Professions.find();
 });
 
 Meteor.publish(null, function (){
