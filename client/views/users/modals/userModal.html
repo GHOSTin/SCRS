@@ -40,7 +40,7 @@
                     {{#if _contains currentUser.roles "admin"}}
                         <div class="form-group {{#if isEmpty user.roles}}is-empty{{/if}}">
                             <label for="role">Роль</label>
-                            <select id="role" class="form-control input" style="width: 100%;">
+                            <select id="role" class="form-control input pmd-select2" style="width: 100%;">
                                 <option></option>
                                 {{#each role in roles}}
                                     <option value="{{role.value}}" selected="{{#if _contains user.roles role.value}}selected{{/if}}">{{role.text}}</option>

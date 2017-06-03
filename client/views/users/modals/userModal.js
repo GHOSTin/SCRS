@@ -1,4 +1,6 @@
 import {RolesCollection} from '../../../../lib/collections/roles'
+import "/public/js/pmd-select2.js"
+
 Template.userModal.onRendered(()=>{
     $('#role').select2({
         dropdownParent: $('#userModal'),
