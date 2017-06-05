@@ -16,25 +16,40 @@
                     </div>
                     <div class="row">
                         <div class="form-group label-floating is-empty col-sm-6">
-                            <label for="email" class="control-label">№ цеха</label>
-                            <input type="text" class="form-control" id="email">
+                            <label for="gild" class="control-label">№ цеха</label>
+                            <input type="text" class="form-control" id="gild">
                         </div>
                         <div class="form-group label-floating is-empty col-sm-6">
-                            <label for="username" class="control-label">Участок</label>
-                            <input type="text" class="form-control" id="username">
+                            <label for="sector" class="control-label">Участок</label>
+                            <input type="text" class="form-control" id="sector">
                         </div>
                     </div>
                     <div class="form-group is-empty">
                         <label for="controller" class="control-label">Наставник</label>
                         <select class="form-control input pmd-select2" id="controller" style="width: 100%">
+                            <option></option>
                             {{#each controller in controllers}}
-                                <option value="{{controller._id}}">{{controller.profile.name}}</option>
+                                <option value="{{controller.id}}">{{controller.profile.name}}</option>
                             {{/each}}
                         </select>
                     </div>
-                    <div class="form-group label-floating is-empty">
-                        <label for="password2" class="control-label">Повтор пароля</label>
-                        <input type="password" class="form-control" id="password2">
+                    <div class="form-group is-empty">
+                        <label for="master" class="control-label">Мастер</label>
+                        <select class="form-control input pmd-select2" id="master" style="width: 100%">
+                            <option></option>
+                            {{#each master in masters}}
+                                <option value="{{master.id}}">{{master.profile.name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-group is-empty">
+                        <label for="instructor" class="control-label">Инструктор</label>
+                        <select class="form-control input pmd-select2" id="instructor" style="width: 100%">
+                            <option></option>
+                            {{#each instructor in instructors}}
+                                <option value="{{instructor._id}}">{{instructor.profile.name}}</option>
+                            {{/each}}
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
