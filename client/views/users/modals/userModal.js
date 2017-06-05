@@ -1,4 +1,4 @@
-import {RolesCollection} from '../../../../lib/collections/roles'
+import {RolesCollection} from '/lib/collections/roles'
 import "/public/js/pmd-select2.js"
 
 Template.userModal.onRendered(()=>{

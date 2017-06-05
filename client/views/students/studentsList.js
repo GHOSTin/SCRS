@@ -1,4 +1,4 @@
-import {Students} from '../../../lib/collections/students'
+import {Students} from '/lib/collections/students'
 
 Template.studentsList.onCreated( () => {
     let template = Template.instance();

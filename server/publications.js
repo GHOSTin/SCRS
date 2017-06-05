@@ -1,6 +1,6 @@
-import {Students} from '../lib/collections/students.js'
-import {Professions} from '../lib/collections/professions'
-import {Results} from '../lib/collections/results'
+import {Students} from '/lib/collections/students.js'
+import {Professions} from '/lib/collections/professions'
+import {Results} from '/lib/collections/results'
 
 Meteor.publish('results', function() {
   return Results.find({});

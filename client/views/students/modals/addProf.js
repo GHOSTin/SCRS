@@ -1,4 +1,4 @@
-import {Professions} from '../../../../lib/collections/professions'
+import {Professions} from '/lib/collections/professions'
 
 Template.studentsAddProfessionModal.onCreated(()=>{
     let template = Template.instance();
