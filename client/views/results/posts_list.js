@@ -1,5 +1,7 @@
+import {Students} from '../../../lib/collections/students'
+
 Template.resList.helpers({
-  posts: function() {
-    return Posts.find();
+  students: function() {
+    return Students.find({});
   }
 });

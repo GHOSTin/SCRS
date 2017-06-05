@@ -3,12 +3,23 @@
         <div class="well page">
             <h2>
                 Список студентов
-                <a href="" class="btn btn-primary btn-raised btn-xs pull-right" id="add">Добавить</a>
-                <a href="" class="btn btn-primary btn-raised btn-xs pull-right" id="import">Импортировать</a>
+                {{#if _contains currentUser.roles "admin"}}
+                    <a href="" class="btn btn-primary btn-raised btn-xs pull-right" id="add">Добавить</a>
+                    <a href="" class="btn btn-primary btn-raised btn-xs pull-right" id="import">Импортировать</a>
+                {{/if}}
             </h2>
+            <div class="form-group label-floating is-empty">
+                <div class="input-group">
+                    <label class="control-label" for="studentName">ФИО</label>
+                    <input type="text" class="form-control" id="studentName">
+                    <span class="input-group-btn">
+                        <button type="button" href="#" class="btn btn-primary btn-raised" id="find">Поиск</button>
+                    </span>
+                </div>
+            </div>
             <table class="table table-striped table-hover">
                 <tbody>
-                {{#each this}}
+                {{#each students}}
                     {{> studentItem}}
                 {{/each}}
                 </tbody>

@@ -1,0 +1,48 @@
+<template name="studentsAddProfessionModal">
+    <div class="modal fade" id="studentsAddProfessionModal" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Добавление профессии</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group is-empty">
+                        <label for="profName" class="control-label">Получаемая профессия</label>
+                        <select class="form-control input pmd-select2" id="profName" style="width: 100%">
+                            {{#each profession in professions}}
+                                <option value="{{profession._id}}">{{profession.name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="form-group label-floating is-empty col-sm-6">
+                            <label for="email" class="control-label">№ цеха</label>
+                            <input type="text" class="form-control" id="email">
+                        </div>
+                        <div class="form-group label-floating is-empty col-sm-6">
+                            <label for="username" class="control-label">Участок</label>
+                            <input type="text" class="form-control" id="username">
+                        </div>
+                    </div>
+                    <div class="form-group is-empty">
+                        <label for="controller" class="control-label">Наставник</label>
+                        <select class="form-control input pmd-select2" id="controller" style="width: 100%">
+                            {{#each controller in controllers}}
+                                <option value="{{controller._id}}">{{controller.profile.name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-group label-floating is-empty">
+                        <label for="password2" class="control-label">Повтор пароля</label>
+                        <input type="password" class="form-control" id="password2">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="add">Добавить</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</template>
