@@ -3,6 +3,7 @@
     <td><a data-toggle="tab" href="#contact-{{_id}}">{{name}}</a></td>
     <td>{{speciality}}</td>
     <td>{{year}}</td>
+    <td>{{profession.name}}</td>
     {{#if isInRole "admin,controller,master"}}
         <td><a href="#" class="btn btn-primary btn-raised btn-xs no-margin merge" data-user-id="{{_id}}"><i class="fa fa-plus"></i> Добавить профессию</a></td>
     {{/if}}

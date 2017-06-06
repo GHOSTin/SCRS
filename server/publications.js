@@ -1,10 +1,6 @@
 import {Students} from '/lib/collections/students.js'
 import {Professions} from '/lib/collections/professions'
-import {Results} from '/lib/collections/Profession2Student'
-
-Meteor.publish('results', function() {
-  return Results.find({});
-});
+import {Profession2Student} from '/lib/collections/Profession2Student'
 
 Meteor.publish('userList', function () {
   return Meteor.users.find({});
@@ -108,4 +104,7 @@ Meteor.publish('profList', function () {
 
 Meteor.publish(null, function (){
   return Meteor.roles.find({})
+});
+Meteor.publish('p2s', function (){
+  return Profession2Student.find({})
 });

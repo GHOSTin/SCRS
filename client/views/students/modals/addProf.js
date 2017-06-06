@@ -61,20 +61,21 @@ Template.studentsAddProfessionModal.events({
     },
     'click #add': function(e) {
         e.preventDefault();
-        let userId = Session.get('selectedStudent'),
+        let student = Session.get('selectedStudent'),
             result = {
-                id: userId,
+                studentId: student,
                 profId: $('#profName').val(),
                 gild: $('#gild').val(),
                 sector: $('#sector').val(),
-                controller: $('#controller').val(),
-                master: $('#master').val(),
-                instructor: $('#instructor').val(),
+                controllerId: $('#controller').val(),
+                masterId: $('#master').val(),
+                instructorId: $('#instructor').val(),
                 createAt: new Date().toISOString()
             };
         Meteor.call('addProfToStudent', result, function(error, result){
             if (error) {
                 console.log(error);
+                Bert.alert(error.reason, 'danger', 'fixed-top', 'fa-warning');
             }
         });
         Modal.hide("studentsAddProfessionModal");
