@@ -14,7 +14,7 @@ Template.studentsAddProfessionModal.onCreated(()=>{
 
 Template.studentsAddProfessionModal.onRendered(()=>{
     $('select').select2({
-        dropdownParent: $('#studentsAddProfessionModal'),
+        dropdownParent: $('.modal'),
         theme: "bootstrap"
     })
 });
@@ -49,7 +49,7 @@ Template.studentsAddProfessionModal.events({
 
         if (value !== "") {
             template.controllerId.set(value);
-            template.masterId.set("");
+            template.masterId.set(false);
         }
     },
     "change #master": function(element, template){

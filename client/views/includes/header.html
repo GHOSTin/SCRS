@@ -8,6 +8,28 @@
       </a>
       <a class="navbar-brand" href="{{pathFor 'resList'}}">SCRS</a>
       <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="{{isActivePath regex='/journal'}}">
+            <a href="/journal">Журнал</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Справочники
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="/students">Студенты</a>
+              </li>
+              <li>
+                <a href="/professions">Профессии</a>
+              </li>
+              <li>
+                <a href="/users">Пользователи</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
           {{>loginButtons}}
         </ul>

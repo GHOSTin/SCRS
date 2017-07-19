@@ -1,7 +1,53 @@
 <template name="resList">
-  <div class="posts">
-    {{#each students}}
-      {{> resItem}}
-    {{/each}}
+  <div class="ibox">
+    <div class="ibox-content table-responsive">
+      <table class="table table-bordered no-margin dataTables">
+        <thead>
+        <tr>
+          <th rowspan="2" class="text-center">
+            Год выпуска
+          </th>
+          <th rowspan="2" class="text-center">
+            Специальность (сокращенно)
+          </th>
+          <th rowspan="2" class="text-center">
+            Студент (ФИО)
+          </th>
+          <th rowspan="2" class="text-center">
+            Получаемая профессия
+          </th>
+          <th colspan="2" class="text-center">
+            Место практики
+          </th>
+          <th rowspan="2" class="text-center">
+            Наставник (ФИО)
+          </th>
+          <th rowspan="2" class="text-center">
+            Мастер-инструктор (ФИО)
+          </th>
+          <th rowspan="2" class="text-center">
+            Инструктор (ФИО)
+          </th>
+          <th colspan="5" class="text-center">
+            Суммарный итог
+          </th>
+        </tr>
+        <tr>
+          <th class="text-center">№ цеха</th>
+          <th class="text-center">Участок</th>
+          <th>Выполнение сменных заданий</th>
+          <th>Выполнение требований ОТ</th>
+          <th>Соблюдение дисциплины</th>
+          <th>Соответствие стандартам ББМ</th>
+          <th>Оценка Soft-skills</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each students}}
+          {{> resItem}}
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>

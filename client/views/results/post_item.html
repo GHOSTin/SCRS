@@ -1,8 +1,22 @@
 <template name="resItem">
-  <div class="post">
-    <div class="post-content">
-      <h3><a href="{{url}}">{{title}}</a><span> {{domain}}</span></h3>
-    </div>
-    <a href="{{pathFor 'postItem'}}" class="btn btn-raised btn-default">Discuss</a>
-  </div>
+  <tr>
+    <td>{{year}}</td>
+    <td>{{speciality}}</td>
+    <td>{{name}}</td>
+    <td>{{profession.name}}</td>
+    <td class="text-center">{{p2s.gild}}</td>
+    <td class="text-center">{{p2s.sector}}</td>
+    {{#with userData p2s.controllerId}}
+    <td>{{profile.name}}</td>
+    {{/with}}
+    {{#with userData p2s.masterId}}
+    <td>{{profile.name}}</td>
+    {{/with}}
+    {{#with userData p2s.instructorId}}
+    <td>{{profile.name}}</td>
+    {{/with}}
+    {{#each results _id}}
+    <td class="text-center">{{this}}</td>
+    {{/each}}
+  </tr>
 </template>

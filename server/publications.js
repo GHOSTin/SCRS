@@ -1,6 +1,7 @@
 import {Students} from '/lib/collections/students.js'
 import {Professions} from '/lib/collections/professions'
 import {Profession2Student} from '/lib/collections/Profession2Student'
+import {Journal} from '/lib/collections/journal'
 
 Meteor.publish('userList', function () {
   return Meteor.users.find({});
@@ -96,6 +97,44 @@ Meteor.publish('students', function (search) {
         }
     }
     return Students.find(query, projection);
+});
+
+Meteor.publish('studentsOfMaster', function(masterId){
+    check(masterId, Match.OneOf(String, null, undefined));
+
+    let query = {};
+
+    if(masterId) {
+        let students = Profession2Student.find({masterId: masterId})
+            .fetch()
+            .map(function (e) {
+                return e.studentId;
+            });
+        query = {_id: {$in: students}};
+    }
+    return Students.find(query)
+});
+
+Meteor.publish('studentsWithProfession', function(masterId){
+    check(masterId, Match.OneOf(String, Boolean, null, undefined));
+
+    let query, p2sQuery = {};
+
+    if(masterId) {
+        p2sQuery['masterId'] = masterId;
+    }
+    let students = Profession2Student.find(p2sQuery)
+        .fetch()
+        .map(function (e) {
+            return e.studentId;
+        });
+    query = {_id: {$in: students}};
+    return Students.find(query)
+});
+
+
+Meteor.publish('journal', function(){
+    return Journal.find({})
 });
 
 Meteor.publish('profList', function () {
