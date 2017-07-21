@@ -1,5 +1,7 @@
 require('jquery-serializejson');
 import {Students} from '/lib/collections/students'
+import {Profession2Student} from '/lib/collections/Profession2Student'
+import {Professions} from '/lib/collections/professions'
 import moment from '/client/plugins/moment/moment-with-locales'
 
 Template.journal.onCreated(()=>{
@@ -8,7 +10,6 @@ Template.journal.onCreated(()=>{
         masterId.set(Meteor.userId());
     }
     Template.instance().autorun( () => {
-        console.log(masterId.get());
         Template.instance().subscribe('studentsOfMaster', masterId.get());
     });
 });
@@ -49,6 +50,16 @@ Template.journal.helpers({
         if (students) {
             return students;
         }
+    },
+    profession(id) {
+        let p2u = Profession2Student.findOne({
+            studentId: id,
+            isClosed: false
+        });
+        return (p2u)?
+            Professions.findOne({
+                _id: p2u.profId
+            }):[];
     }
 });
 
@@ -70,5 +81,10 @@ Template.journal.events({
             $('#weekly-datepicker').datepicker('update','');
             document.getElementById('form').reset();
         })
+    },
+    'click #endProfession': ( event, template ) => {
+        event.preventDefault();
+        Modal.show('closeProfession');
+        Session.set('closeProfessionStudent', $(event.currentTarget).data('student'))
     }
 });

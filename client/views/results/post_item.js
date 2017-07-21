@@ -3,26 +3,24 @@ import {Profession2Student as P2S} from '/lib/collections/Profession2Student'
 import {Journal} from '/lib/collections/journal'
 
 Template.resItem.helpers({
-  profession() {
-    let p2u = P2S.findOne({
-      studentId: Template.currentData()._id
-    });
-    return (p2u)?
-      Professions.findOne({
-          _id: p2u.profId
-      }):[];
-  },
-  p2s() {
-    return P2S.findOne({
-        studentId: Template.currentData()._id
-    })||[];
-  },
+    firstRow(row, data){
+        return data.indexOf(row) === 0;
+    },
+    profession(id) {
+      return Professions.findOne({
+            _id: id
+        })||[];
+    },
+    p2s() {
+      return P2S.find({
+          studentId: Template.currentData()._id
+      }).fetch()||[];
+    },
     userData(id) {
       return Meteor.users.findOne({_id:id})
     },
-    results(id){
-      let request = Journal.find({studentId: id}).fetch();
-      console.log(request);
+    results(sid, pid){
+      let request = Journal.find({studentId: sid, profId: pid}).fetch();
       let response = [0,0,0,0,0];
       _.each(request, ( elem )=>{
         _.each(elem.points, (elem, index)=>{
@@ -32,5 +30,15 @@ Template.resItem.helpers({
       return response.map((elem)=>{
         return (request.length)?(elem/request.length).toFixed(2):'';
       });
-    }
+    },
+    plans(sid, pid){
+      let arr = [];
+      let request = Journal.find({studentId: sid, profId: pid})
+          .fetch()
+          .map((e)=>{
+            return e.points;
+          });
+      arr = _.range(0,12,0);
+      return $.extend(arr, request);
+    },
 });

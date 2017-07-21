@@ -70,7 +70,8 @@ Template.studentsAddProfessionModal.events({
                 controllerId: $('#controller').val(),
                 masterId: $('#master').val(),
                 instructorId: $('#instructor').val(),
-                createAt: new Date().toISOString()
+                createAt: new Date().toISOString(),
+                isClosed: false
             };
         Meteor.call('addProfToStudent', result, function(error, result){
             if (error) {

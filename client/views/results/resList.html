@@ -1,7 +1,7 @@
 <template name="resList">
   <div class="ibox">
-    <div class="ibox-content table-responsive">
-      <table class="table table-bordered no-margin dataTables">
+    <div class="ibox-content">
+      <table class="table table-bordered table-hover no-margin dataTables">
         <thead>
         <tr>
           <th rowspan="2" class="text-center">
@@ -15,6 +15,9 @@
           </th>
           <th rowspan="2" class="text-center">
             Получаемая профессия
+          </th>
+          <th rowspan="2" class="text-center">
+            Разряд
           </th>
           <th colspan="2" class="text-center">
             Место практики
@@ -31,15 +34,42 @@
           <th colspan="5" class="text-center">
             Суммарный итог
           </th>
+          {{#each _range 1 13 1}}
+            <th colspan="5" class="text-center">
+              Недельный план №{{this}}
+            </th>
+          {{/each}}
         </tr>
         <tr>
-          <th class="text-center">№ цеха</th>
-          <th class="text-center">Участок</th>
-          <th>Выполнение сменных заданий</th>
-          <th>Выполнение требований ОТ</th>
-          <th>Соблюдение дисциплины</th>
-          <th>Соответствие стандартам ББМ</th>
-          <th>Оценка Soft-skills</th>
+          <th class="text-center" data-searchable="false">№ цеха</th>
+          <th class="text-center" data-searchable="false">Участок</th>
+          {{#each _range 0 13 1}}
+          <th style="width: 30px; height: 120px" data-orderable="false" data-searchable="false">
+            <span style="-webkit-writing-mode: vertical-rl;-ms-writing-mode: bt-rl;writing-mode: bt-rl;">
+              Выполнение сменных заданий
+            </span>
+          </th>
+          <th style="width: 30px; height: 120px" data-orderable="false" data-searchable="false">
+            <span style="-webkit-writing-mode: vertical-rl;-ms-writing-mode: bt-rl;writing-mode: bt-rl;">
+              Выполнение требований ОТ
+            </span>
+          </th>
+          <th style="width: 30px; height: 120px" data-orderable="false" data-searchable="false">
+            <span style="-webkit-writing-mode: vertical-rl;-ms-writing-mode: bt-rl;writing-mode: bt-rl;">
+              Соблюдение дисциплины
+            </span>
+          </th>
+          <th style="width: 30px; height: 120px" data-orderable="false" data-searchable="false">
+            <span style="-webkit-writing-mode: vertical-rl;-ms-writing-mode: bt-rl;writing-mode: bt-rl;">
+              Соответствие стандартам ББМ
+            </span>
+          </th>
+          <th style="width: 30px; height: 120px" data-orderable="false" data-searchable="false">
+            <span style="-webkit-writing-mode: vertical-rl;-ms-writing-mode: bt-rl;writing-mode: bt-rl;">
+              Оценка Soft-skills
+            </span>
+          </th>
+          {{/each}}
         </tr>
         </thead>
         <tbody>

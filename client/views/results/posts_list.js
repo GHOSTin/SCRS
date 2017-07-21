@@ -1,11 +1,14 @@
 import {Students} from '/lib/collections/students'
 
 Template.resList.onCreated(function(){
-
 });
 
 Template.resList.onRendered(function(){
-  $('.dataTables').DataTable();
+  if( this.subscriptionsReady() ) {
+      let table = $('.dataTables').DataTable({
+          rowsGroup: [0, 1, 2]
+      });
+  }
 });
 
 Template.resList.helpers({

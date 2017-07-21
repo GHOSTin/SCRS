@@ -26,21 +26,21 @@
               <tbody>
               {{#each students}}
                 <tr>
-                  <td>{{name}}</td>
+                  <td>{{name}} <a href="#" title="Закончить обучение" data-student="{{_id}}" id="endProfession" class="btn btn-primary btn-raised btn-xs pull-right no-margins"><i class="fa fa-ban fa-lg"></i> </a></td>
                   <td class="col-xs-1">
-                    <input name="points[{{_id}}][]" class="form-control" type="number" min="2" max="5">
+                    <input name="points[{{_id}}][]" class="form-control" type="number" min="1" max="5">
                   </td>
                   <td class="col-xs-1">
-                    <input name="points[{{_id}}][]" class="form-control" type="number" min="2" max="5">
+                    <input name="points[{{_id}}][]" class="form-control" type="number" min="1" max="5">
                   </td>
                   <td class="col-xs-1">
-                    <input name="points[{{_id}}][]" class="form-control" type="number" min="2" max="5">
+                    <input name="points[{{_id}}][]" class="form-control" type="number" min="1" max="5">
                   </td>
                   <td class="col-xs-1">
-                    <input name="points[{{_id}}][]" class="form-control" type="number" min="2" max="5">
+                    <input name="points[{{_id}}][]" class="form-control" type="number" min="1" max="5">
                   </td>
                   <td class="col-xs-1">
-                    <input name="points[{{_id}}][]" class="form-control" type="number" min="2" max="5">
+                    <input name="points[{{_id}}][]" class="form-control" type="number" min="1" max="5">
                   </td>
                 </tr>
               {{/each}}

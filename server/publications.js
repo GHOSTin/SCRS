@@ -52,7 +52,7 @@ Meteor.publish('masters', function (controllerId) {
 });
 
 Meteor.publish('instructors', function (masterId) {
-    check(masterId, Match.OneOf(String, null, undefined));
+    check(masterId, Match.OneOf(String, Boolean, null, undefined));
     let instructors = Roles.getUsersInRole('instructor')
         .fetch()
         .map(function (e) {
@@ -100,12 +100,12 @@ Meteor.publish('students', function (search) {
 });
 
 Meteor.publish('studentsOfMaster', function(masterId){
-    check(masterId, Match.OneOf(String, null, undefined));
+    check(masterId, Match.OneOf(String, Boolean, null, undefined));
 
     let query = {};
 
     if(masterId) {
-        let students = Profession2Student.find({masterId: masterId})
+        let students = Profession2Student.find({masterId: masterId, isClosed: false})
             .fetch()
             .map(function (e) {
                 return e.studentId;
@@ -118,7 +118,7 @@ Meteor.publish('studentsOfMaster', function(masterId){
 Meteor.publish('studentsWithProfession', function(masterId){
     check(masterId, Match.OneOf(String, Boolean, null, undefined));
 
-    let query, p2sQuery = {};
+    let query, p2sQuery = {}, self = this;
 
     if(masterId) {
         p2sQuery['masterId'] = masterId;
@@ -129,7 +129,11 @@ Meteor.publish('studentsWithProfession', function(masterId){
             return e.studentId;
         });
     query = {_id: {$in: students}};
-    return Students.find(query)
+    return [
+        Students.find(query),
+        Profession2Student.find(p2sQuery),
+        Journal.find({studentId: {$in: students}})
+    ]
 });
 
 
@@ -145,5 +149,5 @@ Meteor.publish(null, function (){
   return Meteor.roles.find({})
 });
 Meteor.publish('p2s', function (){
-  return Profession2Student.find({})
+  return Profession2Student.find({isClosed: false})
 });
