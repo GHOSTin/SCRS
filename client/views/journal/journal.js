@@ -5,12 +5,8 @@ import {Professions} from '/lib/collections/professions'
 import moment from '/client/plugins/moment/moment-with-locales'
 
 Template.journal.onCreated(()=>{
-    let masterId = new ReactiveVar( false );
-    if(Roles.userIsInRole(Meteor.user(), 'master')){
-        masterId.set(Meteor.userId());
-    }
     Template.instance().autorun( () => {
-        Template.instance().subscribe('studentsOfMaster', masterId.get());
+        Template.instance().subscribe('studentsOfMaster');
     });
 });
 
@@ -19,7 +15,8 @@ Template.journal.onRendered(()=>{
     $weekPicker.datepicker({
         language: "ru",
         maxViewMode: 0,
-        weekStart: 1
+        weekStart: 1,
+        todayHighlight: true
     }).on('changeDate', function (e) {
         if ($weekPicker.data('updating') === true) {
             return;

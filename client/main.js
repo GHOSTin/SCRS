@@ -4,6 +4,12 @@ import { $ } from 'meteor/jquery';
 import dataTablesBootstrap from 'datatables.net-bs';
 import 'datatables.net-bs/css/dataTables.bootstrap.css';
 
+import dataTableButtons from 'datatables.net-buttons-bs'
+
+import html5ExportButtons from 'datatables.net-buttons/js/buttons.html5';
+import flashExportButtons from 'datatables.net-buttons/js/buttons.flash';
+import printButton from 'datatables.net-buttons/js/buttons.print';
+
 Template.registerHelper('toFixed', function(x, decimals){
     return parseFloat(x).toFixed(decimals);
 });
@@ -11,6 +17,10 @@ Template.registerHelper('toFixed', function(x, decimals){
 Meteor.startup(()=> {
     $.material.init();
     dataTablesBootstrap(window, $);
+    //dataTableButtons(window, $);
+    //html5ExportButtons(window, $);
+    //flashExportButtons(window, $);
+    //printButton(window, $);
     $.extend(true, $.fn.dataTable.defaults, {
         language: {
             "processing": "Подождите...",
@@ -35,7 +45,7 @@ Meteor.startup(()=> {
             }
         },
         dom:
-        "<'row'<'col-sm-6'l><'col-sm-6'f>>" +
+        "<'row'<'col-sm-6'l><'col-sm-6'<'html5buttons'B>f>>" +
         "<'row'<'col-sm-12 table-responsive no-padding'tr>>" +
         "<'row'<'col-sm-5'i><'col-sm-7'p>>"
     });

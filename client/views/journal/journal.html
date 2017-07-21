@@ -4,7 +4,7 @@
       <div class="ibox-content" style="max-width: 300px; width: 100%;">
         <div id="weekly-datepicker"></div>
       </div>
-      <button class="btn btn-primary btn-raised" id="addWeekPlan">Добавить Недельный план</button>
+      <button class="btn btn-primary btn-raised" id="addWeekPlan" disabled="{{#if isInRole 'admin'}}disabled{{/if}}">Добавить Недельный план</button>
     </div>
   </div>
   <div class="row">
@@ -28,19 +28,19 @@
                 <tr>
                   <td>{{name}} <a href="#" title="Закончить обучение" data-student="{{_id}}" id="endProfession" class="btn btn-primary btn-raised btn-xs pull-right no-margins"><i class="fa fa-ban fa-lg"></i> </a></td>
                   <td class="col-xs-1">
-                    <input name="points[{{_id}}][]" class="form-control" type="number" min="1" max="5">
+                    <input name="points[{{_id}}][]" class="form-control" type="number" min="1" max="5" disabled="{{#if isInRole 'admin'}}disabled{{/if}}">
                   </td>
                   <td class="col-xs-1">
-                    <input name="points[{{_id}}][]" class="form-control" type="number" min="1" max="5">
+                    <input name="points[{{_id}}][]" class="form-control" type="number" min="1" max="5" disabled="{{#if isInRole 'admin'}}disabled{{/if}}">
                   </td>
                   <td class="col-xs-1">
-                    <input name="points[{{_id}}][]" class="form-control" type="number" min="1" max="5">
+                    <input name="points[{{_id}}][]" class="form-control" type="number" min="1" max="5" disabled="{{#if isInRole 'admin'}}disabled{{/if}}">
                   </td>
                   <td class="col-xs-1">
-                    <input name="points[{{_id}}][]" class="form-control" type="number" min="1" max="5">
+                    <input name="points[{{_id}}][]" class="form-control" type="number" min="1" max="5" disabled="{{#if isInRole 'admin'}}disabled{{/if}}">
                   </td>
                   <td class="col-xs-1">
-                    <input name="points[{{_id}}][]" class="form-control" type="number" min="1" max="5">
+                    <input name="points[{{_id}}][]" class="form-control" type="number" min="1" max="5" disabled="{{#if isInRole 'admin'}}disabled{{/if}}">
                   </td>
                 </tr>
               {{/each}}

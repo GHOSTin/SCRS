@@ -99,20 +99,46 @@ Meteor.publish('students', function (search) {
     return Students.find(query, projection);
 });
 
-Meteor.publish('studentsOfMaster', function(masterId){
-    check(masterId, Match.OneOf(String, Boolean, null, undefined));
+Meteor.publish('studentsOfMaster', function(){
 
     let query = {};
+    let students = [];
 
-    if(masterId) {
-        let students = Profession2Student.find({masterId: masterId, isClosed: false})
-            .fetch()
-            .map(function (e) {
-                return e.studentId;
-            });
-        query = {_id: {$in: students}};
+    if(this.userId) {
+        if(Roles.userIsInRole(this.userId, 'master')) {
+            students = Profession2Student.find({masterId: this.userId, isClosed: false})
+                .fetch()
+                .map(function (e) {
+                    return e.studentId;
+                });
+        }
+        if(Roles.userIsInRole(this.userId, 'controller')){
+            students = Profession2Student.find({controllerId: this.userId, isClosed: false})
+                .fetch()
+                .map(function (e) {
+                    return e.studentId;
+                });
+        }
+        if(Roles.userIsInRole(this.userId, 'instructor')) {
+            students = Profession2Student.find({instructorId: this.userId, isClosed: false})
+                .fetch()
+                .map(function (e) {
+                    return e.studentId;
+                });
+        }
+        if(Roles.userIsInRole(this.userId, 'admin')) {
+            students = Profession2Student.find({isClosed: false})
+                .fetch()
+                .map(function (e) {
+                    return e.studentId;
+                });
+        }
+        if (!_.isEmpty(students)) {
+            query = {_id: {$in: students}};
+        }
+        return Students.find(query);
     }
-    return Students.find(query)
+    return [];
 });
 
 Meteor.publish('studentsWithProfession', function(masterId){
