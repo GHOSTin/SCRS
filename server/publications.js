@@ -135,8 +135,9 @@ Meteor.publish('studentsOfMaster', function(){
         }
         if (!_.isEmpty(students)) {
             query = {_id: {$in: students}};
+            return Students.find(query);
         }
-        return Students.find(query);
+        return [];
     }
     return [];
 });

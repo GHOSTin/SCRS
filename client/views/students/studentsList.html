@@ -17,13 +17,24 @@
                     </span>
                 </div>
             </div>
-            <table class="table table-striped table-hover">
-                <tbody>
-                {{#each students}}
-                    {{> studentItem}}
-                {{/each}}
-                </tbody>
-            </table>
+            {{#footable data-paging="true" class="table table-striped table-hover"}}
+              <thead>
+                <tr>
+                  <th>ФИО</th>
+                  <th>Профессия</th>
+                  <th>Год выпуска</th>
+                  <th>Получаемая профессия</th>
+                  <th>Мастер</th>
+                  <th data-sortable="true"></th>
+                  <th data-sortable="true"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#fooBody students}}
+                  {{> studentItem}}
+                {{/fooBody}}
+              </tbody>
+            {{/footable}}
         </div>
     </div>
 </template>

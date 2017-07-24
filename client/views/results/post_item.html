@@ -2,9 +2,9 @@
   {{#let profLength = p2s.length}}
   {{#each prof in p2s}}
   <tr>
-    <td data-rowspan="{{_id}}-1" data-order="{{year}}">{{year}}</td>
-    <td data-rowspan="{{_id}}-2" data-order="{{speciality}}">{{speciality}}</td>
-    <td data-rowspan="{{_id}}-3" data-order="{{name}}">{{name}}</td>
+    <td>{{year}}</td>
+    <td>{{speciality}}</td>
+    <td>{{name}}</td>
     {{#with profession prof.profId}}
     <td>{{name}}</td>
     {{/with}}
