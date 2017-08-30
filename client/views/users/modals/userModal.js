@@ -1,8 +1,22 @@
 import {RolesCollection} from '/lib/collections/roles'
 import "/public/js/pmd-select2.js"
 
+Template.userModal.onCreated(()=>{
+    Template.instance().parentUsersList = new ReactiveVar();
+    let user = Meteor.users.findOne(Session.get('selectedUser'));
+    if(Roles.userIsInRole(user, 'master')) {
+        let userList = Roles.getUsersInRole('controller');
+        Template.instance().parentUsersList.set(userList);
+    }
+    if(Roles.userIsInRole(user, 'instructor')) {
+        let userList = Roles.getUsersInRole('master');
+        Template.instance().parentUsersList.set(userList);
+    }
+});
+
 Template.userModal.onRendered(()=>{
-    $('#role').select2({
+    $.fn.modal.Constructor.prototype.enforceFocus = $.noop;
+    $('#role, #parent').select2({
         dropdownParent: $('#userModal'),
         theme: "bootstrap"
     })
@@ -18,7 +32,11 @@ Template.userModal.helpers({
             return {username:'', profile:{name: ''}, roles: []}
         }
     },
-    roles: () => {return RolesCollection;}
+    roles: () => {return RolesCollection;},
+    parentUsers() {
+        let template = Template.instance();
+        return template.parentUsersList.get()
+    }
 });
 
 Template.userModal.events({
@@ -33,6 +51,7 @@ Template.userModal.events({
                 password2: $('#password2').val()||"",
                 role: $('#role').val(),
                 status: $('#status').is(':checked')?"active":"",
+                parent: $('#parent').val()
             };
         if (!userId) {
             Meteor.call('addUser', user, function (error, result) {
@@ -51,9 +70,18 @@ Template.userModal.events({
 
         Modal.hide('userModal');
     },
-    'change select#role': (e) => {
+    'change select#role': (e, template) => {
         if($(e.target).val() === "master") {
-
+            let userList = Roles.getUsersInRole('controller');
+            template.parentUsersList.set(userList);
         }
-    }
+        if($(e.target).val() === "instructor") {
+            let userList = Roles.getUsersInRole('master');
+            template.parentUsersList.set(userList);
+        }
+        if($(e.target).val() === "admin" || $(e.target).val() === "controller"){
+            template.parentUsersList.set(false);
+        }
+        $('#parent').select2("val", "");
+    },
 });

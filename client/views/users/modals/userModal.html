@@ -1,5 +1,5 @@
 <template name="userModal">
-    <div class="modal fade" id="userModal">
+    <div class="modal fade" id="userModal" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog">
             <div class="modal-content">
 
@@ -46,6 +46,15 @@
                                     <option value="{{role.value}}" selected="{{#if _contains user.roles role.value}}selected{{/if}}">{{role.text}}</option>
                                 {{/each}}
                             </select>
+                        </div>
+                        <div class="form-group {{#if isEmpty user.roles}}is-empty{{/if}}">
+                          <label for="parent">Начальник</label>
+                          <select id="parent" class="form-control input pmd-select2" style="width: 100%;">
+                            <option value=""></option>
+                            {{#each parent in parentUsers}}
+                              <option value="{{parent._id}}" selected="{{#if $eq user.profile.parentUser parent._id}}selected{{/if}}">{{parent.profile.name}}</option>
+                            {{/each}}
+                          </select>
                         </div>
                     {{else}}
                         {{#if _contains currentUser.roles "controller"}}
