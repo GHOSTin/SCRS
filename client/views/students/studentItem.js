@@ -29,5 +29,18 @@ Template.studentItem.events({
     'click .merge': function(e) {
         Session.set('selectedStudent', e.target.getAttribute('data-user-id').trim());
         Modal.show('studentsAddProfessionModal');
+    },
+    'click .delete': (event)=> {
+        event.preventDefault();
+        let studentId = $(event.currentTarget).data('user-id');
+        if(confirm('Вы действительно хотите удалить студента?')){
+            Meteor.call('deleteStudent', studentId, (error)=>{
+                if(error){
+                    console.log(error);
+                    return false;
+                }
+                Bert.alert( 'Студент успешно удален!', 'success', 'growl-top-right' );
+            })
+        }
     }
 });
