@@ -26,6 +26,17 @@
       {{profile.name}}
     {{/with}}
     </td>
+    <td>
+      {{#if actuality _id prof.profId}}
+        <p class="text-navy text-center">
+          <i class="fa fa-check fa-2x"></i>
+        </p>
+      {{else}}
+        <p class="text-danger text-center">
+          <i class="fa fa-ban fa-2x"></i>
+        </p>
+      {{/if}}
+    </td>
     {{#each results _id prof.profId}}
       <td class="text-center">{{this}}</td>
     {{/each}}

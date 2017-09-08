@@ -41,4 +41,14 @@ Template.resItem.helpers({
       arr = _.range(0,12,0);
       return $.extend(arr, request);
     },
+    actuality(sid, pid){
+        let lastRecord = Journal
+            .find({studentId: sid, profId: pid},{sort: {endDate: 1}, limit:1})
+            .fetch()
+            .pop()
+            ,last = lastRecord?new Date(lastRecord.endDate):new Date()
+            ,now = new Date();
+        return Math.ceil(Math.abs(now.getTime() - last.getTime())/(1000*3600*24)) <= 14 ||
+            Journal.find({studentId: sid, profId: pid}).count() <= 12;
+    }
 });

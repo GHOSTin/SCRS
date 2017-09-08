@@ -61,7 +61,7 @@ Template.journal.helpers({
 });
 
 Template.journal.events({
-    'click #addWeekPlan': (event, template) => {
+    'submit #form': (event, template) => {
         event.preventDefault();
         let results = $('#form').serializeJSON();
         let dates = $('#weekly-datepicker').datepicker('getDates');
@@ -77,7 +77,8 @@ Template.journal.events({
             }
             $('#weekly-datepicker').datepicker('update','');
             document.getElementById('form').reset();
-        })
+        });
+        return false;
     },
     'click #endProfession': ( event, template ) => {
         event.preventDefault();

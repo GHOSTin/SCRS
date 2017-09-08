@@ -37,5 +37,5 @@ ksrv:select2-bootstrap3
 natestrauser:select2
 dynamic-import@0.1.1
 zimme:active-route
-aldeed:tabular
 meloncon:footable
+aldeed:tabular
