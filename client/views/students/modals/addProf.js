@@ -7,8 +7,8 @@ Template.studentsAddProfessionModal.onCreated(()=>{
     template.autorun( () => {
         template.subscribe('profList');
         template.subscribe('controllers');
-        template.subscribe('masters', template.controllerId.get());
-        template.subscribe('instructors', template.masterId.get(), template.controllerId.get());
+        template.subscribe('masters');
+        template.subscribe('instructors');
     });
 });
 

@@ -47,7 +47,7 @@
                                 {{/each}}
                             </select>
                         </div>
-                        <div class="form-group {{#if isEmpty user.roles}}is-empty{{/if}}">
+                        <!--<div class="form-group {{#if isEmpty user.roles}}is-empty{{/if}}">
                           <label for="parent">Начальник</label>
                           <select id="parent" class="form-control input pmd-select2" style="width: 100%;">
                             <option value=""></option>
@@ -55,7 +55,7 @@
                               <option value="{{parent._id}}" selected="{{#if $eq user.profile.parentUser parent._id}}selected{{/if}}">{{parent.profile.name}}</option>
                             {{/each}}
                           </select>
-                        </div>
+                        </div>-->
                     {{else}}
                         {{#if _contains currentUser.roles "controller"}}
                             <div class="form-group">

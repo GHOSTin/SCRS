@@ -69,6 +69,19 @@ Template.journal.events({
             Bert.alert('Выберите период!', 'fixed-top', 'danger', 'fa-calendar');
             return false;
         }
+        let error = false;
+        _.each(results.points, (elem, index, list)=>{
+            let summary = elem.reduce((a, b) => a + b, 0);
+            if(elem.some((element, index, array)=>{
+                return _.isEmpty(element);
+                }) && summary > 0){
+                error = true;
+            }
+        });
+        if(error){
+            Bert.alert('Не указаны требуемые оценки!', 'growl-top-right', 'danger', 'fa-info');
+            return false;
+        }
         _.extend(results, {startDate: new Date(_.first(dates)), endDate: new Date(_.last(dates))});
         Meteor.call('addResultsToJournal', results, function(error, response){
             if(error) {
@@ -77,6 +90,7 @@ Template.journal.events({
             }
             $('#weekly-datepicker').datepicker('update','');
             document.getElementById('form').reset();
+            Bert.alert(`Оценки успешно добавлены.`, 'success');
         });
         return false;
     },
