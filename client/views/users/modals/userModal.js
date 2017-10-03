@@ -50,8 +50,7 @@ Template.userModal.events({
                 password: $('#password').val()||"",
                 password2: $('#password2').val()||"",
                 role: $('#role').val(),
-                status: $('#status').is(':checked')?"active":"",
-                parent: $('#parent').val()
+                status: $('#status').is(':checked')?"active":""
             };
         if (!userId) {
             Meteor.call('addUser', user, function (error, result) {

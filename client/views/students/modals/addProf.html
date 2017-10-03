@@ -29,7 +29,7 @@
                         <div class="form-group">
                           <label for="roleText">Наставник</label>
                           <input id="roleText" type="text" class="form-control" disabled="disabled" value="{{currentUser.profile.name}}">
-                          <input id="controller" type="hidden" value="{{currentUser.id}}">
+                          <input id="controller" type="hidden" value="{{currentUser._id}}">
                         </div>
                       {{else}}
                         <label for="controller" class="control-label">Наставник</label>
@@ -46,7 +46,7 @@
                           <div class="form-group">
                             <label for="roleText">Мастер</label>
                             <input id="roleText" type="text" class="form-control" disabled="disabled" value="{{currentUser.profile.name}}">
-                            <input id="master" type="hidden" value="{{currentUser.id}}">
+                            <input id="master" type="hidden" value="{{currentUser._id}}">
                           </div>
                         {{else}}
                           <label for="master" class="control-label">Мастер</label>
@@ -63,7 +63,7 @@
                           <div class="form-group">
                             <label for="roleText">Инструктор</label>
                             <input id="roleText" type="text" class="form-control" disabled="disabled" value="{{currentUser.profile.name}}">
-                            <input id="instructor" type="hidden" value="{{currentUser.id}}">
+                            <input id="instructor" type="hidden" value="{{currentUser._id}}">
                           </div>
                         {{else}}
                           <label for="instructor" class="control-label">Инструктор</label>
