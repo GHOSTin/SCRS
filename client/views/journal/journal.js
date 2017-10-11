@@ -77,21 +77,26 @@ Template.journal.events({
                 }) && summary > 0){
                 error = true;
             }
+            if (parseInt(summary) === 0) {
+                delete results.points[index];
+            }
         });
         if(error){
             Bert.alert('Не указаны требуемые оценки!', 'growl-top-right', 'danger', 'fa-info');
             return false;
         }
-        _.extend(results, {startDate: new Date(_.first(dates)), endDate: new Date(_.last(dates))});
-        Meteor.call('addResultsToJournal', results, function(error, response){
-            if(error) {
-                Bert.alert(error.reason, 'danger', 'fixed-top', 'fa-frown-o');
-                return false;
-            }
-            $('#weekly-datepicker').datepicker('update','');
-            document.getElementById('form').reset();
-            Bert.alert(`Оценки успешно добавлены.`, 'success');
-        });
+        if(results.points){
+            _.extend(results, {startDate: new Date(_.first(dates)), endDate: new Date(_.last(dates))});
+            Meteor.call('addResultsToJournal', results, function(error, response){
+                if(error) {
+                    Bert.alert(error.reason, 'danger', 'fixed-top', 'fa-frown-o');
+                    return false;
+                }
+                $('#weekly-datepicker').datepicker('update','');
+                document.getElementById('form').reset();
+                Bert.alert(`Оценки успешно добавлены.`, 'success');
+            });
+        }
         return false;
     },
     'click #endProfession': ( event, template ) => {
