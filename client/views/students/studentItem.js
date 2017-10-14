@@ -42,5 +42,11 @@ Template.studentItem.events({
                 Bert.alert( 'Студент успешно удален!', 'success', 'growl-top-right' );
             })
         }
+    },
+    'click .edit': (event)=> {
+        event.preventDefault();
+        let studentId = $(event.currentTarget).data('user-id');
+        Session.set('selectedStudent', studentId);
+        Modal.show('studentEditModal');
     }
 });
