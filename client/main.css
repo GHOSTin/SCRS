@@ -8076,3 +8076,17 @@ body.md-skin {
     transform: rotate(90deg);
     transform-origin: left top 0;
 }
+
+div.tooltip-inner{
+    text-align: left;
+    max-width: 450px;
+}
+div.tooltip-inner > ol,
+div.tooltip-inner > ul {
+    padding: 5px 0 5px 20px;
+    margin: 0;
+}
+div.tooltip-inner > table td {
+    border: 1px solid white;
+    padding: 2px 5px;
+}

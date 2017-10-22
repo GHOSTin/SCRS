@@ -12,6 +12,7 @@ Template.journal.onCreated(()=>{
 
 Template.journal.onRendered(()=>{
     let $weekPicker = $('#weekly-datepicker');
+    $('[data-toggle="tooltip"]').tooltip();
     $weekPicker.datepicker({
         language: "ru",
         maxViewMode: 0,
