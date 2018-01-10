@@ -43,12 +43,10 @@ Template.resItem.helpers({
     },
     actuality(sid, pid){
         let lastRecord = Journal
-            .find({studentId: sid, profId: pid},{sort: {endDate: 1}, limit:1})
-            .fetch()
-            .pop()
+            .findOne({studentId: sid, profId: pid},{sort: {endDate: 1}})
             ,last = lastRecord?new Date(lastRecord.endDate):new Date()
-            ,now = new Date();
+            ,now = new Date();console.log(lastRecord);
         return Math.ceil(Math.abs(now.getTime() - last.getTime())/(1000*3600*24)) <= 14 ||
-            Journal.find({studentId: sid, profId: pid}).count() <= 12;
+            Journal.find({studentId: sid, profId: pid}).count() === 12;
     }
 });
